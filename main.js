@@ -1,4 +1,3 @@
-//Changes
 $(document).ready(function() {
 	var i = -1;
 	var qNum = 0;
