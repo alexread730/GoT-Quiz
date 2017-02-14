@@ -1,0 +1,19 @@
+#next {
+	 display: inline-block;
+    height:20px;
+	width:70px;
+	background-color:#3B99FC;
+	font-family:'papyrus;
+	font-weight:bold;
+	color:#ffffff;
+	border-radius: 5px;
+	text-align:center;
+	margin-top:2px;
+}
+
+* {
+	font-family: 'papyrus';
+	color: #C4D1D9;
+	background-color: black;
+}
+
