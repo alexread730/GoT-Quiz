@@ -2,9 +2,9 @@ $(document).ready(function() {
 	var i = -1;
 	var qNum = 0;
 	var score = 0;
-	var toggleElements = $(".radbut, br, #next, #R1, #R2, #R3, #R4");
-	$(".radbut").hide();
-	$("br").hide();
+	var toggleElements = $(".radbut, br, #R1, #R2, #R3, #R4");
+	toggleElements.hide();
+	
 
 	//display value upon radio button checked change - for debugging purposes
 	$('.radbut').change(function() {
@@ -13,27 +13,32 @@ $(document).ready(function() {
 	});
 
 
-
 		$("#next").click(function(){
 
-			$(".radbut").show();
-			$("br").show();
+			if (i<3) {
+			toggleElements.hide();
+			toggleElements.fadeIn("slow");
+		}
 
-			var value = ($('input[name="Q"]:checked').prop('checked', false).val()); //checks which radio button is checked and sets it to value
-				//add +1 to score if choice matches answer
-				if (i >= 0 && i < 4) {
-					if (value == allQuestions[i].answer) {
-						score++;
-					};
+
+			//checks which radio button is checked and sets it to value
+			var value = ($('input[name="Q"]:checked').prop('checked', false).val()); 
+			
+			//add +1 to score if choice matches answer
+			if (i >= 0 && i < 4) {
+				
+				if (value == allQuestions[i].answer) {
+					score++;
+				};
 			};
-
        		
+
 			i += 1;
 			qNum += 1;
 
-			toggleElements[allQuestions[i].choices ? 'show' : 'hide']();
-			
 			//display questions and variables
+			//toggleElements[allQuestions[i].choices ? 'show' : 'hide']();
+
 			$("#questionLoc").text(allQuestions[i].question);
 
 			if (allQuestions[i].choices) {
@@ -41,7 +46,8 @@ $(document).ready(function() {
 			$("#R2").text(allQuestions[i].choices[1]);
 			$("#R3").text(allQuestions[i].choices[2]);
 			$("#R4").text(allQuestions[i].choices[3]);
-		}
+			}
+
 
 		 /* Show these for values
 			$("#qNum").text(qNum);
@@ -51,6 +57,7 @@ $(document).ready(function() {
 		
 			if (i >= 3) {
 				$("h3").text("Winter has come! You have scored " +score+ "/3.");
+				toggleElements.hide();
 			}			
 
 
